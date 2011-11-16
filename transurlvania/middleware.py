@@ -32,7 +32,7 @@ class LangInDomainMiddleware(object):
 
     def process_request(self, request):
         for lang in LANGUAGE_DOMAINS.keys():
-            if LANGUAGE_DOMAINS[lang][0] == request.META['SERVER_NAME']:
+            if LANGUAGE_DOMAINS[lang][0] == request.META['HTTP_HOST']:
                 translation.activate(lang)
                 request.LANGUAGE_CODE = translation.get_language()
 
